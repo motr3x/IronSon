@@ -1,7 +1,6 @@
 package controller;
 
 import entity.Joke;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import service.JokeServiceImpl;
 
