@@ -1,6 +1,6 @@
-package repository;
+package ru.scherin.MyFirstIronSon.repository;
 
-import entity.Joke;
+import ru.scherin.MyFirstIronSon.entity.Joke;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

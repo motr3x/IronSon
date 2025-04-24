@@ -1,4 +1,4 @@
-package exception;
+package ru.scherin.MyFirstIronSon.exception;
 
 import lombok.*;
 

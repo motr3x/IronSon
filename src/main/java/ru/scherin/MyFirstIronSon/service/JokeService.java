@@ -1,6 +1,6 @@
-package service;
+package ru.scherin.MyFirstIronSon.service;
 
-import entity.Joke;
+import ru.scherin.MyFirstIronSon.entity.Joke;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

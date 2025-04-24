@@ -1,8 +1,8 @@
-package controller;
+package ru.scherin.MyFirstIronSon.controller;
 
-import entity.Joke;
+import ru.scherin.MyFirstIronSon.entity.Joke;
 import org.springframework.web.bind.annotation.*;
-import service.JokeServiceImpl;
+import ru.scherin.MyFirstIronSon.service.JokeServiceImpl;
 
 import java.util.List;
 
