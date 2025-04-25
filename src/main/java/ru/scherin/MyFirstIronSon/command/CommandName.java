@@ -6,7 +6,8 @@ public enum CommandName {
     JOKES("/jokes"),
     HELP("/help"),
     DELETE("/delete"),
-    CREATE("/create");
+    CREATE("/create"),
+    NO("/no");
 
     private final String commandName;
 

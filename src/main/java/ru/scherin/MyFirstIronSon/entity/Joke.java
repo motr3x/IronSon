@@ -53,6 +53,6 @@ public class Joke {
 
     @Override
     public String toString() {
-        return text + "\n";
+        return  "{" + id + "} " + "\"" + text + "\"";
     }
 }

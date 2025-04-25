@@ -17,12 +17,14 @@ public class CreateJokeCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(),"Joke was created");
-        Joke newJoke = new Joke();
-        newJoke.setDateOfCreate(new Date());
-        newJoke.setDateOfModify(new Date());
-        newJoke.setText(update.getMessage().getText().replace("/create ", "").toString());
-        newJoke.setId(632L);
-        jokeService.saveJoke(newJoke);
+        if(update.getMessage().getText().contains("/create")) {
+            sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), "Joke was created");
+            Joke newJoke = new Joke();
+            newJoke.setDateOfCreate(new Date());
+            newJoke.setDateOfModify(new Date());
+            newJoke.setText(update.getMessage().getText().replace("/create ", "").toString());
+            newJoke.setId(632L);
+            jokeService.saveJoke(newJoke);
+        }
     }
 }

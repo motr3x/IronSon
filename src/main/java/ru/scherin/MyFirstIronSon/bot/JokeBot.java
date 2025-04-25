@@ -10,6 +10,8 @@ import ru.scherin.MyFirstIronSon.command.CommandContainer;
 import ru.scherin.MyFirstIronSon.service.JokeServiceImpl;
 import ru.scherin.MyFirstIronSon.service.SendBotMessageServiceImpl;
 
+import static ru.scherin.MyFirstIronSon.command.CommandName.NO;
+
 
 @Component
 @PropertySource("classpath:application.yml")
@@ -37,7 +39,7 @@ public class JokeBot extends TelegramLongPollingBot {
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 commandContainer.retrieveCommand(commandIdentifier).execute(update);
             } else {
-               //TODO commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
             }
         }
     }

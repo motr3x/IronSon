@@ -1,5 +1,6 @@
 package ru.scherin.MyFirstIronSon.command;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.scherin.MyFirstIronSon.entity.Joke;
 import ru.scherin.MyFirstIronSon.service.SendBotMessageService;
 import ru.scherin.MyFirstIronSon.service.JokeServiceImpl;
 
@@ -16,6 +17,6 @@ public class JokesCommand implements Command {
     @Override
     public void execute(Update update) {
         sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(),jokeService.getAllJoke().stream().map(Object::toString)
-                .collect(Collectors.joining("")));
+                .collect(Collectors.joining("\n")));
     }
 }

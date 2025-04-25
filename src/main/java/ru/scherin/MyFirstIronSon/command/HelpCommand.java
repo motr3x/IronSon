@@ -11,7 +11,6 @@ public class HelpCommand implements Command {
 
     public static final String HELP_MESSAGE = String.format("✨<b>Дотупные команды</b>✨\n\n"
 
-                    + "<b>Начать\\закончить работу с ботом</b>\n"
                     + "%s - получить все шутки\n"
                     + "%s id - получить шутку по id\n"
                     + "%s id - удалить шутку по id\n"

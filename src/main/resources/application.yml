@@ -8,5 +8,5 @@ spring:
       ddl-auto: update
     show-sql: true
 bot:
-  username: IronSonBot
-  token: 7917364329:AAGKjdfuijbzhGRzmMDwf-HsJqpPnaCeZkA
+  username: ${bot_username}
+  token: ${bot_token}
