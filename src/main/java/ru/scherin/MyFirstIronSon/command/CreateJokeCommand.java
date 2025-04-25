@@ -17,9 +17,10 @@ public class CreateJokeCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        if(update.getMessage().getText().contains("/create")) {
+        if(update.getMessage().getText().contains("/create ") && update.getMessage().getText().replace("/create ", "") != "") {
             sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), "Joke was created");
             Joke newJoke = new Joke();
+            newJoke.setAuthor(update.getMessage().getFrom().getUserName());
             newJoke.setDateOfCreate(new Date());
             newJoke.setDateOfModify(new Date());
             newJoke.setText(update.getMessage().getText().replace("/create ", "").toString());

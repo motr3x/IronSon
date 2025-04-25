@@ -18,6 +18,16 @@ public class Joke {
     private Date dateOfCreate;
     @Column(name="date_of_modify")
     private Date dateOfModify;
+    @Column(name="author")
+    private String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public Long getId() {
         return id;
@@ -53,6 +63,6 @@ public class Joke {
 
     @Override
     public String toString() {
-        return  "{" + id + "} " + "\"" + text + "\"";
+        return  "{" + id + "} " + "\"" + text + "\"" + " \n AUTHOR: " + author;
     }
 }

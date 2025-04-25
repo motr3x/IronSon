@@ -9,12 +9,12 @@ public class HelpCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String HELP_MESSAGE = String.format("✨<b>Дотупные команды</b>✨\n\n"
+    public static final String HELP_MESSAGE = String.format("\uD83D\uDC47\uD83C\uDFFF<b>Дотупные команды</b>\uD83D\uDC47\uD83C\uDFFF\n\n"
 
                     + "%s - получить все шутки\n"
                     + "%s id - получить шутку по id\n"
                     + "%s id - удалить шутку по id\n"
-                    + "%s - добавить новую шутку\n\n"
+                    + "%s joke - добавить новую шутку\n\n"
                     + "%s - получить помощь в работе со мной",
             JOKES.getCommandName(), JOKE.getCommandName(), DELETE.getCommandName(), CREATE.getCommandName(), HELP.getCommandName());
 
