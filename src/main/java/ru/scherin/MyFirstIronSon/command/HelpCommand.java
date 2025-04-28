@@ -14,7 +14,7 @@ public class HelpCommand implements Command {
                     + "%s - получить все шутки\n"
                     + "%s id - получить шутку по id\n"
                     + "%s id - удалить шутку по id\n"
-                    + "%s joke - добавить новую шутку\n\n"
+                    + "%s \"текст анекдота\" - добавить новую шутку\n\n"
                     + "%s - получить помощь в работе со мной",
             JOKES.getCommandName(), JOKE.getCommandName(), DELETE.getCommandName(), CREATE.getCommandName(), HELP.getCommandName());
 

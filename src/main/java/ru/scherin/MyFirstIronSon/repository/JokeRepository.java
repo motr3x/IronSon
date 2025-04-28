@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JokeRepository extends JpaRepository<Joke, Long> {
-    Joke getJokeById(Long id);
-    void deleteJokeById(Long id);
+    void removeById(Long id);
 }

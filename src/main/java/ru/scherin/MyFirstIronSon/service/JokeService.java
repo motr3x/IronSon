@@ -10,4 +10,5 @@ public interface JokeService {
     List<Joke> getAllJoke();
     Joke getJokeById(Long id);
     void deleteJokeById(Long id);
+    void editJokeById(Long id, String text);
 }

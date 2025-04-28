@@ -5,7 +5,7 @@ import ru.scherin.MyFirstIronSon.service.SendBotMessageService;
 
 public class NoCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
-    public static final String UNKNOWN_MESSAGE = "ТОЛЬКО КОМАНДЫ СО СЛЕШЕМ Б";
+    public static final String UNKNOWN_MESSAGE = "ТОЛЬКО КОМАНДЫ СО СЛЕШЕМ!";
 
     public NoCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
