@@ -2,6 +2,7 @@ package ru.scherin.MyFirstIronSon.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import ru.scherin.MyFirstIronSon.DTO.JokeDto;
 import ru.scherin.MyFirstIronSon.entity.Joke;
 import org.springframework.web.bind.annotation.*;
 import ru.scherin.MyFirstIronSon.service.JokeServiceImpl;
@@ -18,13 +19,16 @@ public class JokeController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity<String> createdJoke(@RequestBody Joke joke){
+    public ResponseEntity<String> createJoke(@RequestBody JokeDto jokeDto) {
+        Joke joke = new Joke();
+        joke.setText(jokeDto.getText());
+        joke.setAuthor(jokeDto.getAuthor());
         jokeService.saveJoke(joke);
         return ResponseEntity.status(HttpStatus.CREATED).body("Анекдот создан");
     }
     @ResponseStatus(HttpStatus.OK)
     @GetMapping()
-    public ResponseEntity<List<Joke>> getAllJoke(){
+    public ResponseEntity<List<JokeDto>> getAllJoke(){
         return ResponseEntity.ok(jokeService.getAllJoke());
     }
     @ResponseStatus(HttpStatus.OK)
@@ -35,9 +39,10 @@ public class JokeController {
         jokeService.editJokeById(id, joke.getText());
         return ResponseEntity.ok("Анекдот отредактирован");
     }
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public Joke getJokeById(@PathVariable Long id){
+    public JokeDto getJokeById(@PathVariable Long id){
         return jokeService.getJokeById(id);
     }
     @ResponseStatus(HttpStatus.OK)

@@ -1,14 +1,14 @@
 package ru.scherin.MyFirstIronSon.service;
 
-import ru.scherin.MyFirstIronSon.entity.Joke;
+import ru.scherin.MyFirstIronSon.DTO.JokeDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface JokeService {
-    List<Joke> getAllJoke();
-    Joke getJokeById(Long id);
+    List<JokeDto> getAllJoke();
+    JokeDto getJokeById(Long id);
     void deleteJokeById(Long id);
     void editJokeById(Long id, String text);
 }

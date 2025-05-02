@@ -1,13 +1,16 @@
 package ru.scherin.MyFirstIronSon.service;
 
+import jakarta.transaction.Transactional;
+import ru.scherin.MyFirstIronSon.DTO.JokeDto;
 import ru.scherin.MyFirstIronSon.entity.Joke;
 import org.springframework.stereotype.Service;
 import ru.scherin.MyFirstIronSon.exception.JokeNotFoundException;
 import ru.scherin.MyFirstIronSon.repository.JokeRepository;
 
-import javax.transaction.Transactional;
+
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JokeServiceImpl implements JokeService{
@@ -18,17 +21,25 @@ public class JokeServiceImpl implements JokeService{
     }
 
     @Override
-    public List<Joke> getAllJoke() {
-        return jokeRepository.findAll();
+    public List<JokeDto> getAllJoke() {
+        return jokeRepository.findAll().stream()
+                .map(this::convertToJokeDto)
+                .collect(Collectors.toList());
     }
     @Transactional
     public void saveJoke(Joke newJoke){
         jokeRepository.save(newJoke);
     }
-    public Joke getJokeById(Long id) {
-        return jokeRepository.findById(id).orElseThrow(() -> new JokeNotFoundException("Анекдот с "+id+" не найден"));
+    public JokeDto getJokeById(Long id) {
+        Joke joke = jokeRepository.findById(id).orElseThrow();
+        return convertToJokeDto(joke);
     }
-
+    public JokeDto convertToJokeDto(Joke joke) {
+        JokeDto jokeDto = new JokeDto();
+        jokeDto.setText(joke.getText());
+        jokeDto.setAuthor(joke.getAuthor());
+        return jokeDto;
+    }
     @Transactional
     @Override
     public void deleteJokeById(Long id) {

@@ -1,11 +1,9 @@
 package ru.scherin.MyFirstIronSon.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.Date;
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Joke {
     @Id
@@ -20,6 +18,17 @@ public class Joke {
     private Date dateOfModify;
     @Column(name="author")
     private String author;
+
+    public Joke(Long id, String text, Date dateOfCreate, Date dateOfModify, String author) {
+        this.id = id;
+        this.text = text;
+        this.dateOfCreate = dateOfCreate;
+        this.dateOfModify = dateOfModify;
+        this.author = author;
+    }
+
+    public Joke() {
+    }
 
     public String getAuthor() {
         return author;
