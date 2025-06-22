@@ -1,0 +1,121 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: your_name
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+
+        - createTable:
+            tableName: role_authorities
+            columns:
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_role_authorities_role
+                    references: roles(id)
+                    onDelete: CASCADE
+              - column:
+                  name: authority
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_role
+                    references: roles(id)
+
+        - insert:
+            tableName: roles
+            columns:
+              - name: name
+                value: "USER"
+            - insert:
+              tableName: roles
+              columns:
+                - name: name
+                  value: "MODERATOR"
+            - insert:
+              tableName: roles
+              columns:
+                - name: name
+                  value: "ADMIN"
+
+        - insert:
+            tableName: role_authorities
+            columns:
+              - name: role_id
+                valueComputed: (SELECT id FROM roles WHERE name = 'USER')
+              - name: authority
+                value: "JOKE_READ"
+            - insert:
+              tableName: role_authorities
+              columns:
+                - name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE name = 'USER')
+                - name: authority
+                  value: "JOKE_WRITE"
+
+        - insert:
+            tableName: role_authorities
+            columns:
+              - name: role_id
+                valueComputed: (SELECT id FROM roles WHERE name = 'MODERATOR')
+              - name: authority
+                value: "JOKE_MODIFY"
+            - insert:
+              tableName: role_authorities
+              columns:
+                - name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE name = 'MODERATOR')
+                - name: authority
+                  value: "JOKE_DELETE"
+
+        - insert:
+            tableName: role_authorities
+            columns:
+              - name: role_id
+                valueComputed: (SELECT id FROM roles WHERE name = 'ADMIN')
+              - name: authority
+                value: "USER_MANAGE"

@@ -7,7 +7,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
 bot:
   username: ${BOT_USERNAME}
   token: ${BOT_TOKEN}
+
 

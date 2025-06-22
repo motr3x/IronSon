@@ -18,13 +18,13 @@ public class CommandContainer {
                 .put(DELETE.getCommandName(), new DeleteJokeCommand(sendBotMessageService, jokeService))
                 .put(CREATE.getCommandName(), new CreateJokeCommand(sendBotMessageService, jokeService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
+                // Новые команды
+                .put(RANDOM.getCommandName(), new RandomJokeCommand(sendBotMessageService, jokeService))
+                .put(TOP.getCommandName(), new TopJokesCommand(sendBotMessageService, jokeService))
+                .put(STATS.getCommandName(), new StatsCommand(sendBotMessageService, jokeService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
-    }
-
-    public Command retrieveCommand(String commandIdentifier) {
-        return commandMap.getOrDefault(commandIdentifier, unknownCommand);
     }
 
 }

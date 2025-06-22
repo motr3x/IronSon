@@ -3,23 +3,24 @@ package ru.scherin.MyFirstIronSon.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 public class Joke {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "joke_seq")
+    @SequenceGenerator(name = "joke_seq", sequenceName = "joke_sequence", allocationSize = 1)
     private Long id;
     @Column(name="text")
     private String text;
     @Column(name="date_of_create")
-    private Date dateOfCreate;
+    private LocalDateTime dateOfCreate;
     @Column(name="date_of_modify")
-    private Date dateOfModify;
+    private LocalDateTime dateOfModify;
     @Column(name="author")
     private String author;
 
-    public Joke(Long id, String text, Date dateOfCreate, Date dateOfModify, String author) {
+    public Joke(Long id, String text, LocalDateTime dateOfCreate, LocalDateTime dateOfModify, String author) {
         this.id = id;
         this.text = text;
         this.dateOfCreate = dateOfCreate;
@@ -46,11 +47,11 @@ public class Joke {
         return text;
     }
 
-    public Date getDateOfCreate() {
+    public LocalDateTime getDateOfCreate() {
         return dateOfCreate;
     }
 
-    public Date getDateOfModify() {
+    public LocalDateTime getDateOfModify() {
         return dateOfModify;
     }
 
@@ -62,11 +63,11 @@ public class Joke {
         this.text = text;
     }
 
-    public void setDateOfCreate(Date dateOfCreate) {
+    public void setDateOfCreate(LocalDateTime dateOfCreate) {
         this.dateOfCreate = dateOfCreate;
     }
 
-    public void setDateOfModify(Date dateOfModify) {
+    public void setDateOfModify(LocalDateTime dateOfModify) {
         this.dateOfModify = dateOfModify;
     }
 

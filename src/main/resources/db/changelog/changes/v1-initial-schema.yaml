@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: your_name
+      changes:
+        - createSequence:
+            sequenceName: joke_sequence
+            startValue: 1
+            incrementBy: 1
+
+        - createTable:
+            tableName: joke
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: text
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_create
+                  type: timestamp
+              - column:
+                  name: date_of_modify
+                  type: timestamp
+              - column:
+                  name: author
+                  type: varchar(255)
+
+        - addDefaultValue:
+            tableName: joke
+            columnName: id
+            defaultValueSequenceNext: joke_sequence
